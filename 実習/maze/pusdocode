@@ -1,0 +1,85 @@
+
+
+
+
+void ofApp::draw() :=
+	//ofBackground(0, 0, 0, 0);
+	ofSetColor(100);
+	ofSetLineWidth(5);
+
+	for i=0 to maze.size()
+		for j=0 to maze[i].size()
+			switch (maze[i][j])
+                각 patern에 대해 색을 자유롭게 선택하서 그리기 
+                ofDrawRectangle()
+			
+		
+	
+void ofApp::freeMemory() :=
+    maze.clear();
+
+
+bool readFile() returns boolean:
+    openFileResult = showFileDialog("Select .maz file")
+    filePath = ""
+    pos = 0
+
+    if openFileResult is successful:
+        fileName = openFileResult.getName()
+        filePath = openFileResult.getPath()
+
+        pos = filePath.find_last_of(".")
+        if pos is not -1 and pos is not 0 and filePath.substr(pos + 1) is equal to "maz":
+            file = openFile(fileName)
+
+            if file does not exist:
+                print "Target file does not exist."
+                return false
+            else:
+                print "We found the target file."
+                isOpen = 1
+
+            buffer = readFileContents(file)
+
+            input_flag = 0
+            idx = 0
+            cnt = 0
+
+            
+
+
+
+
+
+bool ofApp::readFile() :=
+	if openFileResult.bSuccess
+		1. User selected a file
+        fileName = openFileResult.getName()
+        filePath = openFileResult.getPath()
+
+        2. open
+		pos = filePath.find_last_of(".")
+        if pos is not -1 and pos is not 0 and filePath.substr(pos + 1) is equal to "maz":
+            file = openFile(fileName)
+
+        if file does not exist:
+                print "Target file does not exist."
+                return false
+        else
+                print "We found the target file."
+                isOpen = 1
+
+            buffer = readFileContents(file)
+		 
+            maze.clear()
+            string line;
+            while getline(file , line)
+                for i=0 to line.size
+                    mazechar.push_back(character)
+                maze.push_back(mazeChar);
+            
+            return true
+        else:
+            print "Needs a '.maz' extension."
+            return false
+	
